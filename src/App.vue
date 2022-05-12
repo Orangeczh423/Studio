@@ -1,12 +1,10 @@
 <style>
     body {
-        background-color: #2A2A2E;
+        background-color: #FFFFFF;
         overflow-x: hidden;
         border-bottom: #50bfff solid 7px;
     }
-    
-</style>
-<style scoped>
+
     .dsr {
         position: fixed;
         margin-bottom: 40px;
@@ -17,7 +15,7 @@
         height: 120px;
         display: flex;
         align-items: center;
-        border-bottom: 0.1px solid #40a0ff22;
+        border-bottom: 0.1px solid #9cceff7a;
         border-top: 7px solid #50bfff;
     }
 
@@ -32,13 +30,13 @@
     }
 
     .el-menu {
-        background-color: #2A2A2E;
+        background-color: #FFFFFF;
     }
 
-    
     .el-menu {
-        border-right: 0.1px solid #00000022;
+        border-right: 0.1px solid #9cceff7a;
     }
+
     .el-menu-item:focus,
     .el-menu-item:hover {
         outline: 0;
@@ -46,7 +44,7 @@
     }
 
     .el-menu-item {
-        color: white;
+        color: rgb(0, 0, 0);
         font-size: 18px;
     }
 
@@ -55,6 +53,15 @@
     }
 
     .el-menu-item.is-active {
+        background-color: #40a0ff58;
+    }
+
+    .el-submenu__title {
+        color: rgb(0, 0, 0);
+        font-size: 18px;
+    }
+
+    .el-submenu__title:hover {
         background-color: #40a0ff58;
     }
 
@@ -89,7 +96,7 @@
         color: #0080FF;
     }
 </style>
-<style scoped>
+<style>
     .lopic {
         height: 235px;
         transition: height 1s;
@@ -120,27 +127,63 @@
         color: rgb(193, 189, 189);
         border-left: 5px solid #0080FF;
     }
+
+    .a {
+        text-decoration: none;
+    }
 </style>
 <template>
-    <div oncontextmenu = "return false" style="background-color: #2A2A2E;min-height:800px">
-        <div class="dsr" style="width:110%;background-color: #2A2A2E; overflow: hidden">
+
+    <div id="app" oncontextmenu="return false" style="background-color: #FFFFFF;min-height:800px">
+        <div class="dsr" style="width:110%;background-color: #FFFFFF; overflow: hidden">
             <img src="../src/assets/mylogo.png" class="mylogo" alt="">
             <a href="https://github.com/Orangeczh423"><img src="../src/assets/github.png" class="git" alt="github"></a>
         </div>
 
-        <div style="margin-top:120px;background-color:#2A2A2E;padding:0;">
+        <div style="margin-top:120px;background-color:#FFFFFF;padding:0;">
             <el-row :gutter="10">
                 <el-col :xs="4" :sm="4" :md="4" :lg="4" style="position:fixed;left:-10px;width:300px;border-right:0">
                     <div>
-                        <el-menu default-active="1" class="el-menu-vertical-demo" style="min-height:800px"
-                            @select="handleSelect">
-                            <el-menu-item index="1"><img class="myicon" src="../src/assets/home.png" alt="">Home
+                        <el-menu default-active="1" class="el-menu-vertical-demo" style="min-height:800px">
+                            <router-link class="a" to="/">
+                                <el-menu-item index="1"><img class="myicon" src="../src/assets/home.png" alt="">Home
+                                </el-menu-item>
+                            </router-link>
+                            <el-submenu index="2">
+                                <template slot="title">
+                                    <img class="myicon" src="../src/assets/logo.png" alt="">
+                                    <span>Vue.js</span>
+                                </template>
+                                <router-link class="a" to="/Daily">
+                                    <el-menu-item index="2-1">
+                                        踩坑日志
+                                    </el-menu-item>
+                                </router-link>
+                                <router-link class="a" to="/HelloWorld">
+                                    <el-menu-item index="2-2">
+                                        Vue的SPA特性
+                                    </el-menu-item>
+                                </router-link>
+                                <el-menu-item style="color: gray;" index="2-3">
+                                    插值绑定
+                                </el-menu-item>
+                            </el-submenu>
+                            <el-menu-item style="color: gray;" index="3"><img class="myicon" src="../src/assets/media.png" alt="">数字媒体技术基础
                             </el-menu-item>
-                            <el-menu-item @click="jump1" index="2"><img class="myicon" src="../src/assets/logo.png"
-                                    alt=""> Vue.js
-                            </el-menu-item>
-                            <el-menu-item index="3"><img class="myicon" src="../src/assets/media.png" alt="">数字媒体技术基础
-                            </el-menu-item>
+                            <!-- <el-submenu index="4">
+                                <template slot="title">
+                                    <img class="myicon" src="../src/assets/cs.png" alt="">
+                                    <span>计算机组成原理课程设计</span>
+                                </template>
+                                <router-link class="a" to="/HelloWorld">
+                                    <el-menu-item index="4-1">
+                                        Vue的SPA特性
+                                    </el-menu-item>
+                                </router-link>
+                                <el-menu-item index="4-2">
+                                    插值绑定
+                                </el-menu-item>
+                            </el-submenu> -->
                         </el-menu>
                     </div>
                     <footer style="position:fixed;bottom:10px;left:10px;display:flex;font-size:10px">
@@ -148,48 +191,8 @@
                     </footer>
                 </el-col>
                 <el-col :xs="20" :sm="20" :md="20" :lg="20" style="margin-top:50px;margin-left:320px ;">
-                    <div>
-                        <div style="color:aliceblue; padding:5px; margin:2px; background-color: #2A2A2E">
-                            <el-breadcrumb separator="/">
-                                <el-breadcrumb-item v-for="item in breadcrumbItems" :key="item.id">{{item}}
-                                </el-breadcrumb-item>
-                            </el-breadcrumb>
-                        </div>
-                    </div>
-                    <el-divider></el-divider>
-                    <el-row :gutter="20" class="things">
-                        <a href="https://v3.cn.vuejs.org/"><img class="lopic" src="../src/assets/Teches/vue.png"
-                                alt="vue">
-                        </a><a href="https://element.eleme.cn/#/zh-CN"><img class="lopic"
-                                src="../src/assets/Teches/ele.png" alt="vue">
-                        </a><a href="https://developer.mozilla.org/zh-CN/docs/learn/JavaScript"><img class="lopic"
-                                src="../src/assets/Teches/js.png" alt="vue">
-                        </a><a href="https://www.w3cschool.cn/css3/"><img class="lopic"
-                                src="../src/assets/Teches/css.png" alt="vue">
-                        </a><a href="https://zq99299.github.io/java-tutorial/"><img class="lopic"
-                                src="../src/assets/Teches/java.png" alt="vue">
-                        </a><a href="https://www.w3school.com.cn/python/python_reference.asp"><img class="lopic"
-                                src="../src/assets/Teches/python.png" alt="vue"></a>
-                    </el-row>
-
-                    <div class="tip">
-                        <p>{{welcome}}</p>
-                    </div>
-                    <div class="tip">
-                        <p>这是一只来自codepen的狮子，使用Three.js编程实现。按住鼠标左键即可打开电风扇，让狮子凉爽一下！其采用iframe插入到了html网页中。作者： <el-link
-                                type="primary">https://codepen.io/Yakudoo/pen/YXxmYR</el-link>
-                        </p>
-                    </div>
-                    <iframe  height="800px" width="1200px" scrolling="no" src="../static/lion.html"
-                        frameborder="0"></iframe>
-
-                    <!-- <embed src="../static/1.pdf" type="application/pdf" width="1300px" height="100%" /> -->
-                    <!-- <pdf ref="pdf" class="pdf" src="../static/1.pdf">
-                    </pdf> -->
-                    <!-- <iframe src="../static/1.pdf" marginwidth="0" frameBorder="0" allowtransparency="true" bordercolor="white" style="width:1170px;height:2500px" frameborder="0"></iframe> -->
-                    <footer style="position:relative;display:flex;right:100px;float:right">
-                        <p class="p1">最近编辑：2022/5/11</p>
-                    </footer>
+                    <!-- 组件化显示内容 -->
+                    <router-view></router-view>
                 </el-col>
             </el-row>
         </div>
@@ -213,32 +216,54 @@
       },
       
       methods:{
-        jump1(){
-            console.log(this);
-            this.$router.push('/vuer')
-          },
-          /*
-          handleIconClick(ev) {
-              console.log(ev);
-          },
-          
-          handleSelect(key, keyPath){
-              switch(key){
-                  case '1':
-                      this.$router.push('/Page1');
-                      this.breadcrumbItems  = ['首页']
-                      break;
-                  case '2':
-                      this.$router.push('/Page2')
-                      this.breadcrumbItems  = ['Vue.js']
-                      break;
-                  case '3':
-                      this.$router.push('/Page3')
-                      this.breadcrumbItems  = ['树莓基础']
-                      break;
-              }
-          },
-        */
+         
       },
   }
 </script>
+
+<style>
+    .copy-text{
+        height: 30px;
+        width: 60px;
+        background-color: #c5def7;
+        border: 0px;
+        border-radius: 9px;
+        color: rgb(0, 0, 0);
+        position: relative;
+        float: right;
+        right: 10px;
+        cursor: pointer;
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        transition: background-color 1s;
+    }   
+    .copy-text:hover{
+        background-color: #3893ed;
+    }
+    .tip {
+        padding: 8px 16px;
+        background-color: #9ce1ff79;
+        border-radius: 0px;
+        border-left: 5px solid #50bfff;
+        margin: 20px 0;
+        width: 1070px;
+        color: rgb(130, 127, 127);
+        font-size: 18px;
+        transition: color 1s;
+      }
+    
+      .tip:hover {
+        color: rgb(0, 0, 0);
+        border-left: 5px solid #0080FF;
+      }
+      .code{
+          padding-top: 17px;
+          background-color: black;
+          font-size: 15px;
+          font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+          color: rgb(144, 140, 136);
+          transition: color 2s;
+      }
+      .code:hover{
+          color: bisque;
+      }
+</style>

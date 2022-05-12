@@ -5,6 +5,8 @@ import App from './App'
 import router from './router'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+import Clipboard from 'clipboard'
+Vue.prototype.clipboard = Clipboard
 Vue.use(ElementUI)
 Vue.config.productionTip = false
 
