@@ -4,7 +4,9 @@
         overflow-x: hidden;
         border-bottom: #50bfff solid 7px;
     }
-
+    
+</style>
+<style scoped>
     .dsr {
         position: fixed;
         margin-bottom: 40px;
@@ -33,10 +35,10 @@
         background-color: #2A2A2E;
     }
 
+    
     .el-menu {
-        border-right: 0.1px solid #40a0ff22;
+        border-right: 0.1px solid #00000022;
     }
-
     .el-menu-item:focus,
     .el-menu-item:hover {
         outline: 0;
@@ -51,9 +53,11 @@
     #toolbarViewer {
         opacity: 0;
     }
-    .el-menu-item.is-active{
+
+    .el-menu-item.is-active {
         background-color: #40a0ff58;
     }
+
     .git {
         height: 25px;
         position: absolute;
@@ -65,23 +69,27 @@
         width: 20px;
         margin-right: 10px;
     }
-    .p1{
+
+    .p1 {
         transition: color 1s;
         color: #7a7a7c;
     }
-    .p1:hover{
+
+    .p1:hover {
         color: #0080FF;
     }
-    .p2{
+
+    .p2 {
 
         transition: color 1s;
         color: #7a7a7c;
     }
-    .p2:hover{
+
+    .p2:hover {
         color: #0080FF;
     }
 </style>
-<style>
+<style scoped>
     .lopic {
         height: 235px;
         transition: height 1s;
@@ -114,7 +122,7 @@
     }
 </style>
 <template>
-    <div style="background-color: #2A2A2E;min-height:800px">
+    <div oncontextmenu = "return false" style="background-color: #2A2A2E;min-height:800px">
         <div class="dsr" style="width:110%;background-color: #2A2A2E; overflow: hidden">
             <img src="../src/assets/mylogo.png" class="mylogo" alt="">
             <a href="https://github.com/Orangeczh423"><img src="../src/assets/github.png" class="git" alt="github"></a>
@@ -128,14 +136,15 @@
                             @select="handleSelect">
                             <el-menu-item index="1"><img class="myicon" src="../src/assets/home.png" alt="">Home
                             </el-menu-item>
-                            <el-menu-item  @click="jump1" index="2"><img class="myicon" src="../src/assets/logo.png" alt=""> Vue.js
+                            <el-menu-item @click="jump1" index="2"><img class="myicon" src="../src/assets/logo.png"
+                                    alt=""> Vue.js
                             </el-menu-item>
                             <el-menu-item index="3"><img class="myicon" src="../src/assets/media.png" alt="">数字媒体技术基础
                             </el-menu-item>
                         </el-menu>
                     </div>
                     <footer style="position:fixed;bottom:10px;left:10px;display:flex;font-size:10px">
-                        <p class="p2" >©CZH 2022.Copyright</p>
+                        <p class="p2">©CZH 2022.Copyright</p>
                     </footer>
                 </el-col>
                 <el-col :xs="20" :sm="20" :md="20" :lg="20" style="margin-top:50px;margin-left:320px ;">
@@ -167,9 +176,11 @@
                         <p>{{welcome}}</p>
                     </div>
                     <div class="tip">
-                        <p>这是一只来自codepen的狮子，使用Three.js编程实现。按住鼠标左键即可打开电风扇，让狮子凉爽一下！其采用iframe插入到了html网页中。作者： <el-link type="primary">https://codepen.io/Yakudoo/pen/YXxmYR</el-link></p>
+                        <p>这是一只来自codepen的狮子，使用Three.js编程实现。按住鼠标左键即可打开电风扇，让狮子凉爽一下！其采用iframe插入到了html网页中。作者： <el-link
+                                type="primary">https://codepen.io/Yakudoo/pen/YXxmYR</el-link>
+                        </p>
                     </div>
-                    <iframe height="800px" width="1200px" scrolling="no" src="../static/lion.html"
+                    <iframe  height="800px" width="1200px" scrolling="no" src="../static/lion.html"
                         frameborder="0"></iframe>
 
                     <!-- <embed src="../static/1.pdf" type="application/pdf" width="1300px" height="100%" /> -->
@@ -177,7 +188,7 @@
                     </pdf> -->
                     <!-- <iframe src="../static/1.pdf" marginwidth="0" frameBorder="0" allowtransparency="true" bordercolor="white" style="width:1170px;height:2500px" frameborder="0"></iframe> -->
                     <footer style="position:relative;display:flex;right:100px;float:right">
-                        <p class="p1" >最近编辑：2022/5/11</p>
+                        <p class="p1">最近编辑：2022/5/11</p>
                     </footer>
                 </el-col>
             </el-row>
@@ -185,6 +196,7 @@
 
     </div>
 </template>
+
 <script type="text/ecmascript-6">
     import pdf from 'vue-pdf'
   export default {
