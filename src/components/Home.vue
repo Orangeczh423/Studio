@@ -111,23 +111,8 @@
   }
 
   .el-divider {
-    background-color: #235d977e;
+    background-color: #4593e13f;
   }
 
-  .tip {
-    padding: 8px 16px;
-    background-color: #9ce1ff79;
-    border-radius: 0px;
-    border-left: 5px solid #50bfff;
-    margin: 20px 0;
-    width: 1070px;
-    color: rgb(130, 127, 127);
-    font-size: 18px;
-    transition: color 1s;
-  }
 
-  .tip:hover {
-    color: rgb(0, 0, 0);
-    border-left: 5px solid #0080FF;
-  }
 </style>
